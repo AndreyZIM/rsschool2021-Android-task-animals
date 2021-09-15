@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity(), AnimalsListener {
         dialog.setContentView(dialogBinding.root)
         dialog.setCancelable(true)
 
-
         dialogBinding.fieldAnimalName.setText(animal.name)
         dialogBinding.fieldAnimalAge.setText(animal.age.toString())
         dialogBinding.fieldAnimalBreed.setText(animal.breed)
@@ -115,14 +114,7 @@ class MainActivity : AppCompatActivity(), AnimalsListener {
             dialog.dismiss()
         }
         binding.buttonEnter.setOnClickListener {
-            val newAnimal = Animal(
-                animal.id,
-                binding.fieldAnimalName.text.toString(),
-                binding.fieldAnimalAge.text.toString().toInt(),
-                binding.fieldAnimalBreed.text.toString()
-            )
-            viewModel.updateData(newAnimal)
-            dialog.dismiss()
+            checkEditDialogFields(binding, dialog, animal)
         }
     }
 
@@ -131,13 +123,7 @@ class MainActivity : AppCompatActivity(), AnimalsListener {
             dialog.dismiss()
         }
         binding.buttonEnter.setOnClickListener {
-            addNewAnimal(
-                0,
-                binding.fieldAnimalName.text.toString(),
-                binding.fieldAnimalAge.text.toString().toInt(),
-                binding.fieldAnimalBreed.text.toString()
-            )
-            dialog.dismiss()
+            checkAddDialogFields(binding, dialog)
         }
     }
 
@@ -148,6 +134,41 @@ class MainActivity : AppCompatActivity(), AnimalsListener {
         dialog.window!!.setBackgroundDrawable(color)
         dialog.show()
         dialog.window!!.attributes = layoutParams
+    }
+
+    private fun checkAddDialogFields(binding: DialogAddAnimalBinding, dialog: Dialog) {
+        when {
+            binding.fieldAnimalName.text.isEmpty() -> binding.fieldAnimalName.error = ERROR_MESSAGE
+            binding.fieldAnimalAge.text.isEmpty() -> binding.fieldAnimalAge.error = ERROR_MESSAGE
+            binding.fieldAnimalBreed.text.isEmpty() -> binding.fieldAnimalBreed.error = ERROR_MESSAGE
+            else -> {
+                addNewAnimal(
+                    0,
+                    binding.fieldAnimalName.text.toString(),
+                    binding.fieldAnimalAge.text.toString().toInt(),
+                    binding.fieldAnimalBreed.text.toString()
+                )
+                dialog.dismiss()
+            }
+        }
+    }
+
+    private fun checkEditDialogFields(binding: DialogEditAnimalBinding, dialog: Dialog, animal: Animal) {
+        when {
+            binding.fieldAnimalName.text.isEmpty() -> binding.fieldAnimalName.error = ERROR_MESSAGE
+            binding.fieldAnimalAge.text.isEmpty() -> binding.fieldAnimalAge.error = ERROR_MESSAGE
+            binding.fieldAnimalBreed.text.isEmpty() -> binding.fieldAnimalBreed.error = ERROR_MESSAGE
+            else -> {
+                val newAnimal = Animal(
+                    animal.id,
+                    binding.fieldAnimalName.text.toString(),
+                    binding.fieldAnimalAge.text.toString().toInt(),
+                    binding.fieldAnimalBreed.text.toString()
+                )
+                viewModel.updateData(newAnimal)
+                dialog.dismiss()
+            }
+        }
     }
 
     private fun addNewAnimal(id: Int = 0, name: String = "", age: Int = 0, breed: String = "") {
@@ -166,5 +187,9 @@ class MainActivity : AppCompatActivity(), AnimalsListener {
 
     override fun editAnimal(animal: Animal) {
         showEditDialog(this, animal)
+    }
+
+    companion object {
+        const val ERROR_MESSAGE = "Enter the value!"
     }
 }
