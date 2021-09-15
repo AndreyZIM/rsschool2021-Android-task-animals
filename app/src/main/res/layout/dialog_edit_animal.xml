@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="?colorOnPrimary"
+    app:cardCornerRadius="28dp"
+    android:layout_marginHorizontal="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_baseline_edit_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?colorPrimary"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/product_sans_medium"
+            android:gravity="center"
+            android:text="@string/label_edit_animal_data"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            android:layout_marginTop="20dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+            <EditText
+                android:id="@+id/field_animal_name"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/product_sans_regular"
+                android:hint="@string/hint_name"
+                android:importantForAutofill="no"
+                android:inputType="text"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_breed"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="151dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:layout_constraintStart_toStartOf="@+id/text_input_name"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_name">
+
+            <AutoCompleteTextView
+                android:id="@+id/field_animal_breed"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:inputType="none"
+                android:hint="@string/hint_breed"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_age"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="151dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:boxCornerRadiusBottomEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="1dp"
+            app:layout_constraintEnd_toEndOf="@+id/text_input_name"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_name">
+
+            <EditText
+                android:id="@+id/field_animal_age"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/product_sans_regular"
+                android:hint="@string/hint_age"
+                android:importantForAutofill="no"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <Button
+            android:id="@+id/button_cancel"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="65dp"
+            android:layout_height="48dp"
+            android:fontFamily="@font/product_sans_medium"
+            android:text="@string/button_close"
+            android:textAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/button_enter"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_age" />
+
+
+        <Button
+            android:id="@+id/button_enter"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="65dp"
+            android:layout_height="48dp"
+            android:fontFamily="@font/product_sans_medium"
+            android:text="@string/button_enter"
+            android:textAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_input_age" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

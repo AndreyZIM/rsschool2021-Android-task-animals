@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Animals</string>
+    <string name="add_new_animal">Add new animal</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_breed">Breed</string>
+    <string name="hint_age">Age</string>
+    <string name="button_close">Close</string>
+    <string name="button_enter">Enter</string>
+    <string name="label_animals">Animals</string>
+    <string name="label_choose_filter">Choose filter</string>
+    <string name="label_edit_animal_data">Edit animal data</string>
+    <string name="description_how_should_animals_be_sorted">How should animals be sorted?</string>
+    <string name="button_by_name">By name</string>
+    <string name="button_by_breed">By breed</string>
+    <string name="button_by_age">By age</string>
+
+    <string-array name="breeds">
+        <item>Cat</item>
+        <item>Dog</item>
+        <item>Fox</item>
+        <item>Sheep</item>
+    </string-array>
+</resources>
